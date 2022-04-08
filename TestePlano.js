@@ -1,11 +1,18 @@
 $(document).ready(function(){
 
-    // fetch("./planos.json")
-    //     .then(function(resp){
-    //         return resp.json();
-    //     }).then(function(data){
-    //         console.log(data);
-    // });
+    fetch("./planos.json")
+        .then(function(resp){
+            return resp.json();
+        }).then(function(planos){
+            console.log(planos);
+    });
+
+    fetch("./precos.json")
+        .then(function(resp){
+            return resp.json();
+        }).then(function(precos){
+            console.log(precos);
+    });
 
     $("#nBeneficiarios").ready(function() {
         let qtd = 4;
