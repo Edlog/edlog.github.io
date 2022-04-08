@@ -9,14 +9,14 @@ $(document).ready(function(){
 
     $("#nBeneficiarios").ready(function(){
         let qtd = 4;
-        let http = "";
-
+        let http = "<option disabled selected value> -- Selecione Uma Opção -- </option>"
+        
         for (let i = 0; i < qtd; i++) {
             http = http + `
                 <option value="`+ i +`">`+ i +` Beneficiário</option>
             `
         }
-
+   
         $(this).append(http);
 
     });
