@@ -7,12 +7,12 @@ $(document).ready(function(){
             console.log(planos);
     });
 
-    fetch("./precos.json")
-        .then(function(resp){
-            return resp.json();
-        }).then(function(precos){
-            console.log(precos);
-    });
+    // fetch("./precos.json")
+    //     .then(function(resp){
+    //         return resp.json();
+    //     }).then(function(precos){
+    //         console.log(precos);
+    // });
 
     $("#nBeneficiarios").ready(function() {
         let qtd = 4;
