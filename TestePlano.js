@@ -9,10 +9,10 @@ $(document).ready(function(){
 
     $("#nBeneficiarios").ready(function(){
         let qtd = 4;
-        let http = "<option disabled selected value> -- Selecione Uma Opção -- </option>"
-        
+        let http = "<option disabled selected value> -- Selecione Uma Opção -- </option>";
+
         for (let i = 0; i < qtd; i++) {
-            http = http + `
+            http +=`
                 <option value="`+ i +`">`+ i +` Beneficiário</option>
             `
         }
