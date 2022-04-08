@@ -7,12 +7,26 @@ $(document).ready(function(){
             console.log(data);
         });
 
-    $("#nBeneficiarios").change(function() {
-        var value = +$(this).val();
-        var count = 0;
-        var elem = $('#formBeneficiarios').empty();
+    $("#nBeneficiarios").ready(function(){
+        let qtd = 4;
+        let http = "";
 
-        var inputBeneficiario = "";
+        for (let i = 0; i < qtd; i++) {
+            http = http + `
+                <option value="`+ i +`">`+ i +` Beneficiário</option>
+            `
+        }
+
+        $(this).append(http);
+
+    });
+
+    $("#nBeneficiarios").change(function() {
+        let value = +$(this).val();
+        let count = 0;
+        let elem = $('#formBeneficiarios').empty();
+
+        let inputBeneficiario = "";
 
         while (count < value) {
             
