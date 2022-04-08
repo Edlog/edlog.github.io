@@ -7,17 +7,17 @@ $(document).ready(function(){
     //         console.log(data);
     // });
 
-    $("#nBeneficiarios").ready(function(){
+    $("#nBeneficiarios").ready(function() {
         let qtd = 4;
-        let http = "";
+        let html = "<option disabled selected value> -- Selecione Uma Opção -- </option>";
 
         for (let i = 0; i < qtd; i++) {
-            http = http + `
-                <option value="`+ i +`">`+ i +` Beneficiário</option>
+            html = html + `
+                <option value="`+ (i+1) +`">`+ (i+1) +` Beneficiário</option>
             `;
         }
-        
-        $(this).append(http);
+
+        $("#nBeneficiarios").append(html);
 
     });
 
