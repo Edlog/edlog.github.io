@@ -1,22 +1,22 @@
 $(document).ready(function(){
 
-    fetch("./planos.json")
-        .then(function(resp){
-            return resp.json();
-        }).then(function(data){
-            console.log(data);
-        });
+    // fetch("./planos.json")
+    //     .then(function(resp){
+    //         return resp.json();
+    //     }).then(function(data){
+    //         console.log(data);
+    // });
 
     $("#nBeneficiarios").ready(function(){
         let qtd = 4;
-        let http = "<option disabled selected value> -- Selecione Uma Opção -- </option>";
+        let http = "";
 
         for (let i = 0; i < qtd; i++) {
-            http +=`
+            http = http + `
                 <option value="`+ i +`">`+ i +` Beneficiário</option>
-            `
+            `;
         }
-   
+        
         $(this).append(http);
 
     });
