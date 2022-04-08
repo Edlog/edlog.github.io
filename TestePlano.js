@@ -1,18 +1,29 @@
 $(document).ready(function(){
 
+    var planos
+    var precos
+
     fetch("./planos.json")
         .then(function(resp){
             return resp.json();
-        }).then(function(planos){
-            console.log(planos);
+        }).then(function(data){
+            console.log(data);
+            planos = data;
     });
 
     fetch("./precos.json")
         .then(function(resp){
             return resp.json();
-        }).then(function(precos){
-            console.log(precos);
+        }).then(function(data){
+            console.log(data);
+            precos = data;
     });
+
+    
+
+
+
+
 
     $("#nBeneficiarios").ready(function() {
         let qtd = 4;
@@ -47,7 +58,6 @@ $(document).ready(function(){
         
             elem.append($(inputBeneficiario));
 
-            //elem.append($('<br>'));
             count++;
         }
       });
