@@ -25,6 +25,7 @@ $(document).ready(function(){
 
     $("#plano").ready(function(){
         console.log(planos.length);
+        console.log("numero de itens: " + plano);
         for(let i = 0;i < planos.length; i++){
 
         }
