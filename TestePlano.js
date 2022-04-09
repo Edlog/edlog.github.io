@@ -20,12 +20,11 @@ $(document).ready(function(){
             return resp.json();
         }).then(function(data){
             precos = data;
-            console.log("numero de itens: " + precos);
+            console.log(precos);
     });
 
     $("#plano").ready(function(){
-        console.log(planos.length);
-        console.log("numero de itens: " + plano);
+        console.log("numero de itens: " + planos.length);
         for(let i = 0;i < planos.length; i++){
 
         }
