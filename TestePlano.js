@@ -8,11 +8,6 @@ $(document).ready(function(){
     //         planos = data;
     // });
 
-    $.getJSON("planos.json", function(result){
-        var planos =  result;
-        console.log(result);
-    });
-
     fetch("./precos.json")
         .then(function(resp){
             return resp.json();
@@ -22,6 +17,9 @@ $(document).ready(function(){
     });
 
     $("#plano").ready(function(){
+        $.getJSON("planos.json", function(planos){
+            console.log(planos);
+        });
         console.log(Object.keys(planos).length);
         for(let i = 0;i < planos.length; i++){
 
@@ -35,6 +33,8 @@ $(document).ready(function(){
     $("#nBeneficiarios").ready(function() {
         let qtd = 4;
         let html = "<option disabled selected value> -- Selecione Uma Opção -- </option>";
+
+        console.log(planos);
 
         for (let i = 0; i < qtd; i++) {
             html = html + `
