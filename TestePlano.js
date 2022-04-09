@@ -7,7 +7,9 @@ $(document).ready(function(){
     //         console.log(data);
     //         planos = data;
     // });
-
+    const planos = require('./planos.json'); 
+    console.log(planos);
+    
     fetch("./precos.json")
         .then(function(resp){
             return resp.json();
@@ -17,9 +19,6 @@ $(document).ready(function(){
     });
 
     $("#plano").ready(function(){
-        $.getJSON("planos.json", function(planos){
-            console.log(planos);
-        });
         console.log(Object.keys(planos).length);
         for(let i = 0;i < planos.length; i++){
 
