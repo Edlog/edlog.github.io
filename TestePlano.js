@@ -3,12 +3,16 @@ $(document).ready(function(){
     var planos  = new Array();
     var precos = new Array();
 
-    fetch("./planos.json")
-        .then(function(resp){
-            return resp.json();
-        }).then(function(data){
-            console.log(data);
-            planos = data;
+    // fetch("./planos.json")
+    //     .then(function(resp){
+    //         return resp.json();
+    //     }).then(function(data){
+    //         console.log(data);
+    //         planos = data;
+    // });
+
+    $.getJSON("planos.js", function(result){
+        console.log(result);
     });
 
     fetch("./precos.json")
