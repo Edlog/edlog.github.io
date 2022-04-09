@@ -17,7 +17,7 @@ $(document).ready(function(){
 
             for(let i = 0;i < nPlanos; i++){
                 html +=`
-                <option value="`+ (i+1) +`">`+ planos[i].nome +`</option>
+                    <option value="`+ (i+1) +`">`+ planos[i].nome +`</option>
                 `;
             }      
             
@@ -32,8 +32,6 @@ $(document).ready(function(){
             precos = data;
             console.log(precos);
     });
-
-
 
     $("#nBeneficiarios").ready(function() {
         let qtd = 4;
@@ -53,13 +51,12 @@ $(document).ready(function(){
 
     $("#nBeneficiarios").change(function() {
         let value = +$(this).val();
-        let count = 0;
+        // let count = 0;
         let elem = $('#formBeneficiarios').empty();
 
         let inputBeneficiario = "";
 
-        while (count < value) {
-            
+        for (let i = 0; i < value; i++){
             inputBeneficiario = `
             <div class="Beneficiarios" style="margin: 10px">
                 <label for="nBeneficiario`+(count)+`">Beneficiario `+(count+1)+`:</label>
@@ -69,9 +66,22 @@ $(document).ready(function(){
             </div>`;
         
             elem.append($(inputBeneficiario));
-
-            count++;
         }
+
+        // while (count < value) {
+        //     inputBeneficiario = `
+        //     <div class="Beneficiarios" style="margin: 10px">
+        //         <label for="nBeneficiario`+(count)+`">Beneficiario `+(count+1)+`:</label>
+        //         <input id="nBeneficiario`+(count)+`" type = "text">
+        //         <label for="nIdade`+(count)+`">Idade:</label>
+        //         <input id="nIdade`+(count)+`" type = "text">
+        //     </div>`;
+        
+        //     elem.append($(inputBeneficiario));
+
+        //     count++;
+        // }
+
       });
 
 
