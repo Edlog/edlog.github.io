@@ -9,7 +9,7 @@ $(document).ready(function(){
         }).then(function(data){
             planos = data;
             let nPlanos = Object.keys(planos).length;
-            let html = "<option disabled selected value> -- Selecione Uma Opção -- </option>";
+            let html = "<option disabled selected value=0> -- Selecione Uma Opção -- </option>";
             let elem = $("#plano")
 
             console.log(planos);
@@ -37,7 +37,7 @@ $(document).ready(function(){
 
     $("#nBeneficiarios").ready(function() {
         let qtd = 4;
-        let html = "<option disabled selected value> -- Selecione Uma Opção -- </option>";
+        let html = "<option disabled selected value=0> -- Selecione Uma Opção -- </option>";
         let elem = $("#nBeneficiarios");
 
         console.log(planos);
