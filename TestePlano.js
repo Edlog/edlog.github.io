@@ -1,33 +1,26 @@
 $(document).ready(function(){
 
-    // fetch("./planos.json")
-    //     .then(function(resp){
-    //         return resp.json();
-    //     }).then(function(data){
-    //         console.log(data);
-    //         planos = data;
-    // });
-    const planos = require('./planos.json'); 
-    console.log(planos);
-    
     fetch("./precos.json")
         .then(function(resp){
             return resp.json();
         }).then(function(data){
-            precos = data;
+            var precos = data;
             console.log(precos);
     });
 
     $("#plano").ready(function(){
+        fetch("./planos.json")
+        .then(function(resp){
+            return resp.json();
+        }).then(function(data){
+            var planos = data;
+            console.log(planos);
+        });
         console.log(Object.keys(planos).length);
         for(let i = 0;i < planos.length; i++){
 
         }
     });
-
-
-
-
 
     $("#nBeneficiarios").ready(function() {
         let qtd = 4;
