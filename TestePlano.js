@@ -11,7 +11,7 @@ $(document).ready(function(){
     //         planos = data;
     // });
 
-    $.getJSON("./planos.js", function(result){
+    $.getJSON('planos.js', function(result){
         console.log(result);
     });
 
@@ -19,8 +19,8 @@ $(document).ready(function(){
         .then(function(resp){
             return resp.json();
         }).then(function(data){
-            console.log(data);
             precos = data;
+            console.log(precos);
     });
 
     $("#plano").ready(function(){
