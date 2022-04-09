@@ -68,19 +68,7 @@ $(document).ready(function(){
             elem.append($(inputBeneficiario));
         }
 
-        // while (count < value) {
-        //     inputBeneficiario = `
-        //     <div class="Beneficiarios" style="margin: 10px">
-        //         <label for="nBeneficiario`+(count)+`">Beneficiario `+(count+1)+`:</label>
-        //         <input id="nBeneficiario`+(count)+`" type = "text">
-        //         <label for="nIdade`+(count)+`">Idade:</label>
-        //         <input id="nIdade`+(count)+`" type = "text">
-        //     </div>`;
-        
-        //     elem.append($(inputBeneficiario));
-
-        //     count++;
-        // }
+        $("#planosSelector").show();
 
       });
 
