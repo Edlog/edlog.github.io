@@ -1,14 +1,11 @@
 $(document).ready(function(){
 
-    var planos
-    var precos
-
     fetch("./planos.json")
         .then(function(resp){
             return resp.json();
         }).then(function(data){
             console.log(data);
-            planos = data;
+            var planos = data;
     });
 
     fetch("./precos.json")
@@ -16,7 +13,7 @@ $(document).ready(function(){
             return resp.json();
         }).then(function(data){
             console.log(data);
-            precos = data;
+            var precos = data;
     });
 
     $("#plano").ready(function(){
