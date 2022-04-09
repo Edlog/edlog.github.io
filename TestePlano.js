@@ -20,7 +20,7 @@ $(document).ready(function(){
             return resp.json();
         }).then(function(data){
             precos = data;
-            console.log(precos);
+            console.log("numero de itens: " + precos);
     });
 
     $("#plano").ready(function(){
