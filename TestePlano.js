@@ -19,7 +19,12 @@ $(document).ready(function(){
             precos = data;
     });
 
-    $("#plano").ready()
+    $("#plano").ready(function(){
+        console.log(planos.length);
+        for(let i = 0;i < planos.length; i++){
+
+        }
+    });
 
 
 
@@ -36,7 +41,6 @@ $(document).ready(function(){
         }
 
         $("#nBeneficiarios").append(html);
-
     });
 
     $("#nBeneficiarios").change(function() {
