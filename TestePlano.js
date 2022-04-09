@@ -8,13 +8,16 @@ $(document).ready(function(){
             return resp.json();
         }).then(function(data){
             planos = data;
-            var nPlanos = Object.keys(planos).length;
+            let nPlanos = Object.keys(planos).length;
+            let html = "<option disabled selected value> -- Selecione Uma Opção -- </option>";
 
             console.log(planos);
             console.log(nPlanos);
 
             for(let i = 0;i < nPlanos; i++){
-                
+                html +=`
+                <option value="`+ (i+1) +`">`+ planos[i].nome +`</option>
+                `;
             }
 
       
@@ -26,7 +29,7 @@ $(document).ready(function(){
         .then(function(resp){
             return resp.json();
         }).then(function(data){
-            const precos = data;
+            precos = data;
             console.log(precos);
     });
 
@@ -39,7 +42,7 @@ $(document).ready(function(){
         console.log(planos);
 
         for (let i = 0; i < qtd; i++) {
-            html = html + `
+            html +=`
                 <option value="`+ (i+1) +`">`+ (i+1) +` Beneficiário</option>
             `;
         }
