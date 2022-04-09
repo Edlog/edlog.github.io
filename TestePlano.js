@@ -13,6 +13,7 @@ $(document).ready(function(){
 
     $.getJSON("planos.json", function(result){
         console.log(result);
+        console.log(Object.keys(result).length);
     });
 
     fetch("./precos.json")
@@ -24,7 +25,6 @@ $(document).ready(function(){
     });
 
     $("#plano").ready(function(){
-        console.log("numero de itens: " + Object.keys(planos).length);
         for(let i = 0;i < planos.length; i++){
 
         }
