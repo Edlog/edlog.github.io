@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
-    var planos  = new Array();
-    var precos = new Array();
-
     // fetch("./planos.json")
     //     .then(function(resp){
     //         return resp.json();
@@ -12,8 +9,8 @@ $(document).ready(function(){
     // });
 
     $.getJSON("planos.json", function(result){
+        var planos =  result;
         console.log(result);
-        console.log(Object.keys(result).length);
     });
 
     fetch("./precos.json")
@@ -25,6 +22,7 @@ $(document).ready(function(){
     });
 
     $("#plano").ready(function(){
+        console.log(Object.keys(planos).length);
         for(let i = 0;i < planos.length; i++){
 
         }
