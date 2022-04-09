@@ -59,10 +59,10 @@ $(document).ready(function(){
         for (let i = 0; i < value; i++){
             inputBeneficiario = `
             <div class="Beneficiarios" style="margin: 10px">
-                <label for="nBeneficiario`+(count)+`">Beneficiario `+(count+1)+`:</label>
-                <input id="nBeneficiario`+(count)+`" type = "text">
-                <label for="nIdade`+(count)+`">Idade:</label>
-                <input id="nIdade`+(count)+`" type = "text">
+                <label for="nBeneficiario`+(i)+`">Beneficiario `+(i+1)+`:</label>
+                <input id="nBeneficiario`+(i)+`" type = "text">
+                <label for="nIdade`+(i)+`">Idade:</label>
+                <input id="nIdade`+(i)+`" type = "text">
             </div>`;
         
             elem.append($(inputBeneficiario));
