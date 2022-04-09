@@ -10,6 +10,7 @@ $(document).ready(function(){
             planos = data;
             let nPlanos = Object.keys(planos).length;
             let html = "<option disabled selected value> -- Selecione Uma Opção -- </option>";
+            let elem = $("#plano")
 
             console.log(planos);
             console.log(nPlanos);
@@ -18,10 +19,9 @@ $(document).ready(function(){
                 html +=`
                 <option value="`+ (i+1) +`">`+ planos[i].nome +`</option>
                 `;
-            }
-
-      
-
+            }      
+            
+            elem.append(html);
 
     });
 
@@ -38,6 +38,7 @@ $(document).ready(function(){
     $("#nBeneficiarios").ready(function() {
         let qtd = 4;
         let html = "<option disabled selected value> -- Selecione Uma Opção -- </option>";
+        let elem = $("#nBeneficiarios");
 
         console.log(planos);
 
@@ -47,7 +48,7 @@ $(document).ready(function(){
             `;
         }
 
-        $("#nBeneficiarios").append(html);
+        elem.append(html);
     });
 
     $("#nBeneficiarios").change(function() {
