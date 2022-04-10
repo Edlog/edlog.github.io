@@ -62,9 +62,9 @@ $(document).ready(function () {
             inputBeneficiario = `
             <div class="Beneficiarios" style="margin: 10px">
                 <label for="nBeneficiario`+ (i) + `">Beneficiario ` + (i + 1) + `:</label>
-                <input id="nBeneficiario`+ (i) + `" type = "text" required>
+                <input id="nBeneficiario`+ (i) + `" type = "text">
                 <label for="nIdade`+ (i) + `">Idade:</label>
-                <input id="nIdade`+ (i) + `" class="inputIdade" type = "text" required>
+                <input id="nIdade`+ (i) + `" class="inputIdade" type = "text">
             </div>`;
 
             elem.append($(inputBeneficiario));
@@ -78,9 +78,11 @@ $(document).ready(function () {
         $("#calculaPreco").removeAttr("disabled");
     });
 
-    $(document).on('click', '#calculaPreco', function(){ 
+    function botaoCalcula() {
         alert("button is clicked");
-    });
+    }
+
+    $(document).on('click', '#calculaPreco', botaoCalcula());
 
 });
 
