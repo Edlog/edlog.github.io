@@ -64,7 +64,7 @@ $(document).ready(function () {
                 <label for="nBeneficiario`+ (i) + `">Beneficiario ` + (i + 1) + `:</label>
                 <input id="nBeneficiario`+ (i) + `" type = "text" required>
                 <label for="nIdade`+ (i) + `">Idade:</label>
-                <input id="nIdade`+ (i) + `" type = "text" required>
+                <input id="nIdade`+ (i) + `" class="inputIdade" type = "text" required>
             </div>`;
 
             elem.append($(inputBeneficiario));
@@ -74,13 +74,11 @@ $(document).ready(function () {
 
     });
 
-    function stateBotao() {
-        if($(".input").value === "") {
-            $("calculaPreco").disabled = true;
-        } else {
-            $("calculaPreco").disabled = false;
+    $(".inputIdade").keypress(function(evt){
+        if (evt.which < 48 || evt.which > 57){
+            evt.preventDefault();
         }
-    }
+    });
 
     $("#plano").change(function () {
         $("#calculaPreco").removeAttr("disabled");
