@@ -1,3 +1,8 @@
+
+function botaoCalcula() {
+    alert("button is clicked");
+}
+
 $(document).ready(function () {
 
     var planos;
@@ -77,10 +82,6 @@ $(document).ready(function () {
     $("#plano").change(function () {
         $("#calculaPreco").removeAttr("disabled");
     });
-
-    function botaoCalcula() {
-        alert("button is clicked");
-    }
 
     $(document).on('click', '#calculaPreco', botaoCalcula());
 
