@@ -62,9 +62,9 @@ $(document).ready(function () {
             inputBeneficiario = `
             <div class="Beneficiarios" style="margin: 10px">
                 <label for="nBeneficiario`+ (i) + `">Beneficiario ` + (i + 1) + `:</label>
-                <input class="textoObrigatorio" id="nBeneficiario`+ (i) + `" type = "text">
+                <input id="nBeneficiario`+ (i) + `" type = "text" required>
                 <label for="nIdade`+ (i) + `">Idade:</label>
-                <input id="nIdade`+ (i) + `" type = "number">
+                <input id="nIdade`+ (i) + `" type = "number" required>
             </div>`;
 
             elem.append($(inputBeneficiario));
