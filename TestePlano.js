@@ -75,7 +75,7 @@ $(document).ready(function () {
     });
 
     $("#plano").change(function () {
-        $("#calculaPreco").show();
+        $("#calculaPreco").removeAttr("disabled");
     });
 
 
