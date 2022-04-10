@@ -64,7 +64,7 @@ $(document).ready(function () {
                 <label for="nBeneficiario`+ (i) + `">Beneficiario ` + (i + 1) + `:</label>
                 <input id="nBeneficiario`+ (i) + `" type = "text" required>
                 <label for="nIdade`+ (i) + `">Idade:</label>
-                <input id="nIdade`+ (i) + `" type = "number" required>
+                <input id="nIdade`+ (i) + `" type = "text" required>
             </div>`;
 
             elem.append($(inputBeneficiario));
@@ -81,8 +81,6 @@ $(document).ready(function () {
             $("calculaPreco").disabled = false;
         }
     }
-
-    $(".input")
 
     $("#plano").change(function () {
         $("#calculaPreco").removeAttr("disabled");
