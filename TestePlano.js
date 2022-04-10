@@ -74,16 +74,13 @@ $(document).ready(function () {
 
     });
 
-    $(".inputIdade").keypress(function(evt){
-        if (evt.which < 48 || evt.which > 57){
-            evt.preventDefault();
-        }
-    });
-
     $("#plano").change(function () {
         $("#calculaPreco").removeAttr("disabled");
     });
 
+    $(document).on('click', '#calculaPreco', function(){ 
+        alert("button is clicked");
+    });
 
 });
 
