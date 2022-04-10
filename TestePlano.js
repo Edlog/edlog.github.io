@@ -1,14 +1,28 @@
+var planos;
+var precos;
 
 function botaoCalcula() {
-    alert("button is clicked");
+    var idade = new Array();
+    var nBeneficiarios = +$("#nBeneficiarios").val();
+    var indexPlano = +$("#plano").val() - 1;
+    var planoSelecionado = planos[indexPlano];
+
+    var precoPlano = precos.filter(x => { return x.codigo === planoSelecionado.codigo; });
+
+    console.log("indexPlano: " + indexPlano);
+    console.log("Número de Beneficiários: " + nBeneficiarios);
+    console.log(planoSelecionado);
+    console.log(precoPlano);
+
+    for (let i = 0; i < nBeneficiarios; i++) {
+
+    }
+
 }
 
 $(document).ready(function () {
 
-    var planos;
-    var precos;
-
-    fetch("./planos.json")
+    fetch("https://edlog.github.io/planos.json")
         .then(function (resp) {
             return resp.json();
         }).then(function (data) {
@@ -16,9 +30,6 @@ $(document).ready(function () {
             let nPlanos = Object.keys(planos).length;
             let html = "<option disabled selected value=0> -- Selecione Uma Opção -- </option>";
             let elem = $("#plano")
-
-            console.log(planos);
-            console.log(nPlanos);
 
             for (let i = 0; i < nPlanos; i++) {
                 html += `
@@ -30,12 +41,11 @@ $(document).ready(function () {
 
         });
 
-    fetch("./precos.json")
+    fetch("https://edlog.github.io/precos.json")
         .then(function (resp) {
             return resp.json();
         }).then(function (data) {
             precos = data;
-            console.log(precos);
         });
 
 
@@ -83,7 +93,9 @@ $(document).ready(function () {
         $("#calculaPreco").removeAttr("disabled");
     });
 
-    $(document).on('click', '#calculaPreco', botaoCalcula());
+    $(document).on('click', '#calculaPreco', function () {
+        botaoCalcula();
+    });
 
 });
 
