@@ -119,12 +119,12 @@ $(document).ready(function () {
 
     $("#nBeneficiarios").ready(function () {
         let qtd = 4;
-        let html = "<option disabled selected value=0> -- Selecione Uma Opção -- </option>";
+        let html = `<option style="text-align: center" disabled selected value=0> ---- </option>`;
         let elem = $("#nBeneficiarios");
 
         for (let i = 0; i < qtd; i++) {
             html += `
-                <option value="`+ (i + 1) + `">` + (i + 1) + ` Beneficiário</option>
+                <option style="text-align: center" value="`+ (i + 1) + `">` + (i + 1) + `</option>
             `;
         }
 
@@ -178,6 +178,8 @@ $(document).ready(function () {
 
         if(bool){
             botaoCalcula();
+        }else{
+            alert("Por favor, preencha todos os campos");
         }
 
     });
