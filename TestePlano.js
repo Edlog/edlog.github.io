@@ -13,6 +13,26 @@ function selecionaPreco(objArray,n){
     return result;
 }
 
+function checkInput(){
+    let campos = $("input");
+    let idades = $(".inputIdade");
+    let bool = true;
+
+    for(let i = 0; i < campos.length; i++){
+        if($(campos[i]).val() == ''){
+            bool = false;
+        }
+    }
+
+    for(let i = 0; i < idades.length; i++){
+        if($.isNumeric($(idades[i]).val())){
+            bool = false;
+        }
+    }
+    console.log(bool);
+    return bool;
+}
+
 function botaoCalcula() {
     let idades = new Array();
     let html = "";
@@ -42,9 +62,6 @@ function botaoCalcula() {
 
         precoTotal += faixa;
 
-        console.log(idades[i]);
-        console.log(parseFloat(faixa.toFixed(2)));
-
         const precoFormatado  = new Intl.NumberFormat(`pt-BR`, {
             currency: `BRL`,
             style: 'currency',
@@ -52,7 +69,7 @@ function botaoCalcula() {
 
         html = `
             <div>
-                <span>Idade: ` + idades[i] + ` - ` + precoFormatado + `</span>
+                <span>Beneficiario ` + (i+1) + ` Idade: ` + idades[i] + ` - ` + precoFormatado + `</span>
             </div>
         `;
         elem.append(html);
@@ -64,7 +81,7 @@ function botaoCalcula() {
     }).format(precoTotal);
 
     html = `<div style="text-align: center ">
-                <span>Preço Total: ` + precoTotalForm + `</span>
+                <span id="precoTotal">Preço Total: ` + precoTotalForm + `</span>
             </div>`;
     
     elem.append(html);
@@ -117,7 +134,7 @@ $(document).ready(function () {
     $("#nBeneficiarios").change(function () {
         let value = +$(this).val();
         // let count = 0;
-        let elem = $('#formBeneficiarios').empty();
+        let elem = $("#formBeneficiarios").empty();
 
         let inputBeneficiario = "";
 
@@ -139,10 +156,30 @@ $(document).ready(function () {
 
     $("#plano").change(function () {
         $("#calculaPreco").removeAttr("disabled");
+        $("#resultPrecos").empty();
     });
 
     $(document).on('click', '#calculaPreco', function () {
-        botaoCalcula();
+        let campos = $("input");
+        let idades = $(".inputIdade");
+        let bool = true;
+    
+        for(let i = 0; i < campos.length; i++){
+            if($(campos[i]).val() == ''){
+                bool = false;
+            }
+        }
+    
+        for(let i = 0; i < idades.length; i++){
+            if(!$.isNumeric($(idades[i]).val())){
+                bool = false;
+            }
+        }
+
+        if(bool){
+            botaoCalcula();
+        }
+
     });
 
 });
