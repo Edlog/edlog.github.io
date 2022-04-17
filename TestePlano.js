@@ -1,93 +1,93 @@
-var planos;
-var precos;
+$(document).ready(function () {
 
-function selecionaPreco(objArray,n){
-    let result;
+    var planos;
+    var precos;
 
-    for(let i = 0; i < objArray.length;i++){
-        if(objArray[i].minimo_vidas <= n){
-            result = objArray[i];
+    function selecionaPreco(objArray,n){
+        let result;
+
+        for(let i = 0; i < objArray.length;i++){
+            if(objArray[i].minimo_vidas <= n){
+                result = objArray[i];
+            }
         }
+
+        return result;
     }
 
-    return result;
-}
+    function checkInput(){
+        let campos = $("input");
+        let idades = $(".inputIdade");
+        let bool = true;
 
-function checkInput(){
-    let campos = $("input");
-    let idades = $(".inputIdade");
-    let bool = true;
-
-    for(let i = 0; i < campos.length; i++){
-        if($(campos[i]).val() == ''){
-            bool = false;
+        for(let i = 0; i < campos.length; i++){
+            if($(campos[i]).val() == ''){
+                bool = false;
+            }
         }
+
+        for(let i = 0; i < idades.length; i++){
+            if($.isNumeric($(idades[i]).val())){
+                bool = false;
+            }
+        }
+        console.log(bool);
+        return bool;
     }
 
-    for(let i = 0; i < idades.length; i++){
-        if($.isNumeric($(idades[i]).val())){
-            bool = false;
+    function botaoCalcula() {
+        let idades = new Array();
+        let html = "";
+        let nBeneficiarios = +$("#nBeneficiarios").val();
+        let indexPlano = +$("#plano").val() - 1;
+        let planoSelecionado = planos[indexPlano];
+        let precoPlano = precos.filter(x => { return x.codigo === planoSelecionado.codigo; });
+        let precoTotal =  0;
+        let elem = $("#resultPrecos").empty();
+
+        precoPlano.sort((a, b) => {
+            return a.minimo_vidas - b.minimo_vidas;
+        });
+
+        let precoFinal = selecionaPreco(precoPlano,nBeneficiarios);
+        let faixa = 0;
+
+        for (let i = 0; i < nBeneficiarios; i++) {
+            idades.push($("#nIdade"+i).val());
+            if(idades[i] < 18){
+                faixa = precoFinal.faixa1;
+            }else if(idades[i] > 17 && idades[i] < 41){
+                faixa = precoFinal.faixa2;
+            }else{
+                faixa = precoFinal.faixa3;
+            }
+
+            precoTotal += faixa;
+
+            const precoFormatado  = new Intl.NumberFormat(`pt-BR`, {
+                currency: `BRL`,
+                style: 'currency',
+            }).format(faixa);
+
+            html = `
+                <div>
+                    <span>Beneficiario ` + (i+1) + ` Idade: ` + idades[i] + ` - ` + precoFormatado + `</span>
+                </div>
+            `;
+            elem.append(html);
         }
-    }
-    console.log(bool);
-    return bool;
-}
 
-function botaoCalcula() {
-    let idades = new Array();
-    let html = "";
-    let nBeneficiarios = +$("#nBeneficiarios").val();
-    let indexPlano = +$("#plano").val() - 1;
-    let planoSelecionado = planos[indexPlano];
-    let precoPlano = precos.filter(x => { return x.codigo === planoSelecionado.codigo; });
-    let precoTotal =  0;
-    let elem = $("#resultPrecos").empty();
-
-    precoPlano.sort((a, b) => {
-        return a.minimo_vidas - b.minimo_vidas;
-    });
-
-    let precoFinal = selecionaPreco(precoPlano,nBeneficiarios);
-    let faixa = 0;
-
-    for (let i = 0; i < nBeneficiarios; i++) {
-        idades.push($("#nIdade"+i).val());
-        if(idades[i] < 18){
-            faixa = precoFinal.faixa1;
-        }else if(idades[i] > 17 && idades[i] < 41){
-            faixa = precoFinal.faixa2;
-        }else{
-            faixa = precoFinal.faixa3;
-        }
-
-        precoTotal += faixa;
-
-        const precoFormatado  = new Intl.NumberFormat(`pt-BR`, {
+        const precoTotalForm  = new Intl.NumberFormat(`pt-BR`, {
             currency: `BRL`,
             style: 'currency',
-        }).format(faixa);
+        }).format(precoTotal);
 
-        html = `
-            <div>
-                <span>Beneficiario ` + (i+1) + ` Idade: ` + idades[i] + ` - ` + precoFormatado + `</span>
-            </div>
-        `;
+        html = `<div style="text-align: center ">
+                    <span id="precoTotal">Preço Total: ` + precoTotalForm + `</span>
+                </div>`;
+        
         elem.append(html);
     }
-
-    const precoTotalForm  = new Intl.NumberFormat(`pt-BR`, {
-        currency: `BRL`,
-        style: 'currency',
-    }).format(precoTotal);
-
-    html = `<div style="text-align: center ">
-                <span id="precoTotal">Preço Total: ` + precoTotalForm + `</span>
-            </div>`;
-    
-    elem.append(html);
-}
-
-$(document).ready(function () {
 
     fetch("https://edlog.github.io/planos.json")
         .then(function (resp) {
@@ -159,7 +159,7 @@ $(document).ready(function () {
         $("#resultPrecos").empty();
     });
 
-    $(document).on('click', '#calculaPreco', function () {
+    $("#calculaPreco").on('click', function () {
         let campos = $("input");
         let idades = $(".inputIdade");
         let bool = true;
