@@ -163,23 +163,26 @@ $(document).ready(function () {
         let campos = $("input");
         let idades = $(".inputIdade");
         let bool = true;
+        let message = '';
     
         for(let i = 0; i < campos.length; i++){
             if($(campos[i]).val() == ''){
                 bool = false;
+                message = 'Por favor, preencha todos os campos';
             }
         }
     
         for(let i = 0; i < idades.length; i++){
             if(!$.isNumeric($(idades[i]).val())){
                 bool = false;
+                message = 'Digite Apenas Números no Campo Idades';
             }
         }
 
         if(bool){
             botaoCalcula();
         }else{
-            alert("Por favor, preencha todos os campos");
+            alert(message);
         }
 
     });
